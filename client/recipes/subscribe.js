@@ -2,6 +2,7 @@
 
 Template.Recipes.onCreated( function() {
 	var self = this;
+	Session.set('newRecipe', false);
 	self.autorun( function() {
 		self.subscribe('recipes');
 	});
@@ -12,6 +13,13 @@ Template.Recipes.helpers({
 		return Recipes.find({});
 	}
 });
+
+Template.Recipes.events({
+	'click .new-recipe' : () => {
+		Session.set('newRecipe', true);
+	}
+
+})
 
 Template.RecipeSingle.onCreated( function() {
 	var self = this;
